@@ -150,7 +150,6 @@ def reminders():
 
 if __name__=='__main__':
     import argparse
-    from OpenSSL import SSL
     parser = argparse.ArgumentParser()
     parser.add_argument('baseurl')
     parser.add_argument('token')
@@ -159,4 +158,4 @@ if __name__=='__main__':
     app.config['token'] = args.token
 
 
-    app.run(port=8000, ssl_context='adhoc')
+    app.run(port=8000)
