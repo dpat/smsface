@@ -64,14 +64,14 @@ def blog():
     return render_template('blog.html', blog=blog)
 
 @app.route('/blog/<category>', methods=['get'])
-def blog(category):
+def blog_category(category):
 
     blog = get_blog()
 
     return render_template('blog.html', blog=blog, category=category)
 
 @app.route('/blog/<id>', methods=['get'])
-def blog(id):
+def blog_id(id):
 
     blog = get_blog()
 
@@ -88,7 +88,7 @@ def personal():
     return render_template('reminder.html', personal=personal)
 
 @app.route('/personal/<category>', methods=['get'])
-def personal(category):
+def personal_category(category):
 
     if not session['admin']:
         return redirect(url_for('login'))
@@ -98,7 +98,7 @@ def personal(category):
     return render_template('personal.html', personal=personal, category=category)
 
 @app.route('/personal/<id>', methods=['get'])
-def personal(id):
+def personal_id(id):
 
     if not session['admin']:
         return redirect(url_for('login'))
@@ -118,7 +118,7 @@ def random():
     return render_template('reminder.html', random=random)
 
 @app.route('/random/<category>', methods=['get'])
-def random(category):
+def random_category(category):
 
     if not session['admin']:
         return redirect(url_for('login'))
@@ -128,7 +128,7 @@ def random(category):
     return render_template('random.html', random=random, category=category)
 
 @app.route('/random/<id>', methods=['get'])
-def random(id):
+def random_id(id):
 
     if not session['admin']:
         return redirect(url_for('login'))
