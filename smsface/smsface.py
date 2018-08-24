@@ -1,4 +1,4 @@
-1==1from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from datetime import datetime
 import requests, json, flask, sys, os
 
