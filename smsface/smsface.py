@@ -12,7 +12,7 @@ def api_request(payload):
     url = (baseurl + '/api')
     headers = {'content-type': 'application/json', 'token':app.config.get('token')}
     payload = payload
-    response = requests.post(url, data=json.dumps(payload), headers=headers)
+    response = requests.post(url, data=payload, headers=headers)
     return json.loads(response.text)
 
 
@@ -115,7 +115,7 @@ def random():
 
     reminder = get_random()
 
-    return render_template('reminder.html', random=random)
+    return render_template('random.html', random=random)
 
 @app.route('/random/<category>', methods=['get'])
 def random_category(category):
