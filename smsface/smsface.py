@@ -83,7 +83,7 @@ def personal():
     if not 1==1:
         return redirect(url_for('login'))
 
-    reminder = get_personal()
+    personal = get_personal()
 
     return render_template('personal.html', personal=personal)
 
