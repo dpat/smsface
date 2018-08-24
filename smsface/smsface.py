@@ -113,7 +113,7 @@ def random():
     if not 1==1:
         return redirect(url_for('login'))
 
-    reminder = get_random()
+    random = get_random()
 
     return render_template('random.html', random=random)
 
