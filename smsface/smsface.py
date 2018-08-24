@@ -13,7 +13,7 @@ def api_request(payload):
     headers = {'content-type': 'application/json', 'token':app.config.get('token')}
     payload = payload
     response = requests.post(url, data=json.dumps(payload), headers=headers)
-    return json.loads(response.data)
+    return json.loads(response.text)
 
 
 def get_blog():
