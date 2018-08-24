@@ -85,7 +85,7 @@ def personal():
 
     reminder = get_personal()
 
-    return render_template('reminder.html', personal=personal)
+    return render_template('personal.html', personal=personal)
 
 @app.route('/personal/<category>', methods=['get'])
 def personal_category(category):
@@ -145,7 +145,7 @@ def reminders():
 
     reminders = get_reminders()
 
-    return render_template('reminder.html', reminders=reminders)
+    return render_template('reminders.html', reminders=reminders)
 
 
 if __name__=='__main__':
