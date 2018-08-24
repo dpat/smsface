@@ -148,34 +148,6 @@ def reminders():
     return render_template('reminder.html', reminders=reminders)
 
 
-@app.route('/handle_data', methods=['POST'])
-def handle_data():
-
-    baseurl = str(app.config.get('baseurl'))
-
-    if request.method == 'POST':
-
-        payload = request.get_json()
-        url = (baseurl + '/user')
-        headers = {'content-type': 'application/json', 'token':app.config.get('token')}
-        r = requests.post(url, data=json.dumps(payload), headers=headers)
-        response = json.loads(r.text)
-
-
-        session['userid'] = response["userid"]
-        session['admin'] = response["admin"]
-        return json.dumps(response)
-
-
-def get_session_var(variable):
-    var = session.get(variable)
-    if not var:
-        message = 'Failed to find session variable %s' % var
-        return render_template('error.html', exam=None,
-                               error=message), 500
-    return var
-
-
 if __name__=='__main__':
     import argparse
     from OpenSSL import SSL
