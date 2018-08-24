@@ -11,12 +11,6 @@
   <h1> Blog </h1>
 
 
-  {% if admin %}
-    <h1> Welcome {{ user.name }} </h1>
-  {% endif %}
-
-  <h3> Select An Exam </h3>
-
   {% for post in blog %}
   <div>
     {{ post.postid }}
