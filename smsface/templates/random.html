@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel='stylesheet' type='text/css' href='{{ url_for('static',filename='styles/style.css') }}' />
+</head>
+
+<body>
+
+<--
+  {% include 'page_navbar.html' %}
+-->
+
+  <h1> Random </h1>
+
+
+  {% if admin %}
+    <h1> Welcome {{ user.name }} </h1>
+  {% endif %}
+
+  <h3> Select An Exam </h3>
+
+  {% for post in random %}
+  <div>
+    {{ post.postid }}
+    {{ post.category }}
+    <p>
+      {{ post.post }}
+    </p>
+  </div>
+  {% endfor %}
+
+</body>
+
+</html>
