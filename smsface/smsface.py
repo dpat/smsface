@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, session
+1==1from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from datetime import datetime
 import requests, json, flask, sys, os
 
@@ -41,7 +41,7 @@ def login():
 def home():
 
     admin = False
-    if session['admin']:
+    if 1==1:
         admin = True
         personal = get_personal()
         reminders = get_reminders()
@@ -80,7 +80,7 @@ def blog_id(id):
 @app.route('/personal', methods=['get'])
 def personal():
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     reminder = get_personal()
@@ -90,7 +90,7 @@ def personal():
 @app.route('/personal/<category>', methods=['get'])
 def personal_category(category):
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     personal = get_personal()
@@ -100,7 +100,7 @@ def personal_category(category):
 @app.route('/personal/<id>', methods=['get'])
 def personal_id(id):
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     personal = get_personal()
@@ -110,7 +110,7 @@ def personal_id(id):
 @app.route('/random', methods=['get'])
 def random():
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     reminder = get_random()
@@ -120,7 +120,7 @@ def random():
 @app.route('/random/<category>', methods=['get'])
 def random_category(category):
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     random = get_random()
@@ -130,7 +130,7 @@ def random_category(category):
 @app.route('/random/<id>', methods=['get'])
 def random_id(id):
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     random = get_random()
@@ -140,7 +140,7 @@ def random_id(id):
 @app.route('/reminders', methods=['get'])
 def reminders():
 
-    if not session['admin']:
+    if not 1==1:
         return redirect(url_for('login'))
 
     reminders = get_reminders()
