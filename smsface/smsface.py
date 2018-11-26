@@ -54,7 +54,7 @@ def home():
     blog = get_blog()
 
     return render_template('home.html', admin=admin, blog=blog, random=random,
-                           personal=personal, reminders=reminders)
+                           personal=str(app.config.get('baseurl')), reminders=reminders)
 
 @app.route('/blog', methods=['get'])
 def blog():
@@ -149,13 +149,6 @@ def reminders():
 
 
 if __name__=='__main__':
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument('baseurl')
-    parser.add_argument('token')
-    args = parser.parse_args()
-    app.config['baseurl'] = args.baseurl
-    app.config['token'] = args.token
-
-
-    app.run(port=8000)
+    app.config['baseurl'] = '?'
+    app.config['token'] = '?'
+    app.run()
