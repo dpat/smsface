@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
   <body>
-    Welcome
+    <form name="login" action="" method="post">
+      <p>
+          <label for="password">name</label>
+          <input type="password" name="password" id-"password" value="" required>
+      </p>
+      <p>
+          <input type="submit">
+      </p>
+    </form>
+
+    {% if failed %}
+      <p>Password was incorrect</p>
+    {% endif %}
 
 </body>
 <html>

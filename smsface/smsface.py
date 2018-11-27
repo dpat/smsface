@@ -21,6 +21,8 @@ def get_blog():
 
 
 def get_personal():
+    if 'owner' not in session:
+        return redirect(url_for('login'))
     return api_request('personal -get=all')
 
 
@@ -32,12 +34,45 @@ def get_reminders():
     return api_request('random -get=all')
 
 
-@app.route('/')
+@app.route('/sms', methods=['POST'])
+def sms_handler():
+
+    baseurl = str(app.config.get('baseurl'))
+    url = (baseurl + '/sms')
+    response = requests.post(url, request)
+
+    resp = MessagingResponse()
+    num = str(request.form['From'])
+    resp.message(response)
+    return str(resp)
+
+
+@app.route('/login', methods=['post', 'get'])
 def login():
+
     return render_template('login.html')
 
+    if request.method == 'POST':
 
-@app.route('/home', methods=['get'])
+        payload = json.loads(request)
+        for field in payload.keys():
+            if field == 'password':
+                password = payload[field].lower()
+                if password == str(app.config.get('password')).lower():
+                    session['owner'] = 'valid'
+                    return redirect(url_for('home'))
+                else:
+                    return render_template('login.html', failed=True)
+
+@app.route('/logout', methods=['get'])
+def logout():
+    if 'owner' in session:
+        session.pop('owner', None)
+
+    return redirect(url_for('home'))
+
+
+@app.route('/', methods=['get'])
 def home():
 
     admin = False
