@@ -49,11 +49,8 @@ def sms_handler():
 @app.route('/login', methods=['post', 'get'])
 def login():
 
-    return render_template('login.html')
-
     if request.method == 'POST':
 
-        return render_template('login.html', pass1='test')
         password = str(request.form.get('password'))
 
         if password == str(app.config.get('password')):
@@ -61,6 +58,9 @@ def login():
             return redirect(url_for('home'))
         else:
             return render_template('login.html', failed=True)
+    else:
+        return render_template('login.html')
+
 
 @app.route('/logout', methods=['get'])
 def logout():
