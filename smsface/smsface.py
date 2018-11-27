@@ -49,11 +49,12 @@ def sms_handler():
 @app.route('/login', methods=['post', 'get'])
 def login():
 
-    return render_template('login.html', pass1=app.config.get('password'))
+    return render_template('login.html')
 
     if request.method == 'POST':
 
         password = str(request.form.get('password'))
+        return render_template('login.html', pass1=password)
 
         if password == str(app.config.get('password')):
             session['owner'] = 'valid'
