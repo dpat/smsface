@@ -53,7 +53,7 @@ def login():
 
     if request.method == 'POST':
 
-        return render_template('login.html', failed=True)
+        return render_template('login.html', pass1='test')
         password = str(request.form.get('password'))
 
         if password == str(app.config.get('password')):
