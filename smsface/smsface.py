@@ -53,15 +53,13 @@ def login():
 
     if request.method == 'POST':
 
-        payload = json.loads(request)
-        for field in payload.keys():
-            if field == 'password':
-                password = payload[field].lower()
-                if password == str(app.config.get('password')).lower():
-                    session['owner'] = 'valid'
-                    return redirect(url_for('home'))
-                else:
-                    return render_template('login.html', failed=True)
+        password = request.form.get('password')
+
+        if password == str(app.config.get('password')).lower():
+            session['owner'] = 'valid'
+            return redirect(url_for('home'))
+        else:
+            return render_template('login.html', failed=True)
 
 @app.route('/logout', methods=['get'])
 def logout():
@@ -114,7 +112,7 @@ def blog_id(id):
 @app.route('/personal', methods=['get'])
 def personal():
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     personal = get_personal()
