@@ -186,4 +186,5 @@ def reminders():
 if __name__=='__main__':
     app.config['baseurl'] = '?'
     app.config['token'] = '?'
+    app.config['password'] = '?'
     app.run()
