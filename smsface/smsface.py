@@ -123,7 +123,7 @@ def personal():
 @app.route('/personal/<category>', methods=['get'])
 def personal_category(category):
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     personal = get_personal()
@@ -144,7 +144,7 @@ def personal_id(id):
 @app.route('/random', methods=['get'])
 def random():
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     random = get_random()
@@ -154,7 +154,7 @@ def random():
 @app.route('/random/<category>', methods=['get'])
 def random_category(category):
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     random = get_random()
@@ -164,7 +164,7 @@ def random_category(category):
 @app.route('/random/<id>', methods=['get'])
 def random_id(id):
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     random = get_random()
@@ -174,7 +174,7 @@ def random_id(id):
 @app.route('/reminders', methods=['get'])
 def reminders():
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     reminders = get_reminders()
