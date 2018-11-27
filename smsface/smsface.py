@@ -54,7 +54,6 @@ def login():
     if request.method == 'POST':
 
         password = str(request.form.get('password'))
-        return render_template('login.html', pass1=request)
 
         if password == str(app.config.get('password')):
             session['owner'] = 'valid'
