@@ -21,8 +21,7 @@ def get_blog():
 
 
 def get_personal():
-    if 'owner' not in session:
-        return redirect(url_for('login'))
+
     return api_request('personal -get=all')
 
 
@@ -132,10 +131,11 @@ def personal_category(category):
 
     return render_template('personal.html', personal=personal, category=category)
 
+
 @app.route('/personal/<id>', methods=['get'])
 def personal_id(id):
 
-    if not 1==1:
+    if 'owner' not in session:
         return redirect(url_for('login'))
 
     personal = get_personal()
