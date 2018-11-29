@@ -11,13 +11,13 @@
     list-style-type: none;
     text-align: justify;
 }
-
-.post-date {
-    float: right;
+@media screen and (min-width: 767px){
+  .post-date {
+      float: right;
+  }
 }
-
 @media screen and (max-width: 767px){
-.post-date {
-    display: none;
-}
+  .post-date {
+      display: none;
+  }
 }
