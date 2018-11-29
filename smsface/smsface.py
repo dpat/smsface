@@ -81,7 +81,7 @@ def home():
 
     blog = get_blog('all')
     for item in blog:
-        item['date'] = parse(item['date']).strftime('%d-%b-%y')
+        item['date'] = parse(item['date']).strftime('%d %b %Y')
     return render_template('home.html', admin=admin, blog=blog, random=random,
                            personal=personal, reminders=reminders)
 
