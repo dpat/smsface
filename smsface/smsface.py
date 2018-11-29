@@ -97,7 +97,7 @@ def blog_category(category):
 
     return render_template('blog.html', blog=blog, category=category)
 
-@app.route('/blog/<int:id>', methods=['get'])
+@app.route('/blog/<str:id>', methods=['get'])
 def blog_id(id):
 
     blog = get_blog(id)
