@@ -13,7 +13,7 @@
 
   <h1> Blog </h1>
 
-  {% for post in blog %}
+  {% for post in blog[::-1] %}
   <div>
     <p>
       ----------------
@@ -26,6 +26,9 @@
 
   </div>
   {% endfor %}
+  <p>
+    ----------------
+  </p>
 
 </body>
 
