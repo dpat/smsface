@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, session
 from datetime import datetime
 import requests, json, flask, sys, os
+from dateutil.parser import parse
 
 app = Flask(__name__)
 app.secret_key = 'testing this out'
@@ -80,7 +81,7 @@ def home():
 
     blog = get_blog('all')
     for item in blog:
-        item['date'] = datetime.strptime(item['date'], '%d-%b-%y')
+        item['date'] = parse(item['date']).strftime('%d-%b-%y')
     return render_template('home.html', admin=admin, blog=blog, random=random,
                            personal=personal, reminders=reminders)
 
