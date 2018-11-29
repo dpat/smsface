@@ -79,10 +79,10 @@ def home():
     random = "not_admin"
 
     blog = get_blog('all')
-
-    date = datetime.strptime(blog['date'], '%d-%b-%y')
+    for item in blog:
+        item['date'] = datetime.strptime(item['date'], '%d-%b-%y')
     return render_template('home.html', admin=admin, blog=blog, random=random,
-                           personal=personal, reminders=reminders, date=date)
+                           personal=personal, reminders=reminders)
 
 @app.route('/blog', methods=['get'])
 def blog():
