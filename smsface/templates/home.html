@@ -10,16 +10,21 @@
 <main>
   <h2> Welcome to the first ever SMS generated website </h2>
 
-
+  <ol class="post-list">
   {% for post in blog %}
-  <div>
-    {{ post.postid }}
-    {{ post.category }}
-    <p>
-      {{ post.post }}
-    </p>
-  </div>
+           <div class="row">
+               <li class="post-row">
+                   <span class="text-left">
+                       <a href="/blog/{{post.postid}}/">{{post.title}}</a>
+                   </span>
+                   &nbsp; &nbsp;
+                   <span class="post-date text-right">
+                       {{ post.date }}
+                   </span>
+               </li>
+           </div>
   {% endfor %}
+</ol>
 </main>
 </body>
 
