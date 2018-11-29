@@ -80,7 +80,7 @@ def home():
 
     blog = get_blog('all')
 
-    date = blog['date'].strftime('%d-%b-%y')
+    date = datetime.strptime(blog['date'], '%d-%b-%y')
     return render_template('home.html', admin=admin, blog=blog, random=random,
                            personal=personal, reminders=reminders, date=date)
 
