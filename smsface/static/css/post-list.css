@@ -16,7 +16,7 @@
       float: right;
   }
 }
-@media (max-width: 767px){
+@media (max-width: 70px){
   .post-date {
       display: none;
   }
