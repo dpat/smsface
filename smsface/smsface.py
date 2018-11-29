@@ -16,21 +16,20 @@ def api_request(payload):
     return json.loads(response.text)
 
 
-def get_blog():
-    return api_request('blog -get=all')
+def get_blog(id):
+    return api_request(('blog -get=' + str(id)))
 
 
-def get_personal():
+def get_personal(id):
+    return api_request(('personal -get=' + str(id)))
 
-    return api_request('personal -get=all')
 
-
-def get_random():
-    return api_request('random -get=all')
+def get_random(id):
+    return api_request(('random -get=' + str(id)))
 
 
 def get_reminders():
-    return api_request('random -get=all')
+    return api_request('reminders -get=all')
 
 
 @app.route('/sms', methods=['POST'])
@@ -74,39 +73,34 @@ def logout():
 def home():
 
     admin = False
-    if 1==1:
-        admin = True
-        personal = get_personal()
-        reminders = get_reminders()
-        random = get_random()
-    else:
-        personal = "not_admin"
-        reminders = "not_admin"
-        random = "not_admin"
 
-    blog = get_blog()
+    personal = "not_admin"
+    reminders = "not_admin"
+    random = "not_admin"
+
+    blog = get_blog('all')
 
     return render_template('home.html', admin=admin, blog=blog, random=random,
-                           personal=str(app.config.get('baseurl')), reminders=reminders)
+                           personal=personal, reminders=reminders)
 
 @app.route('/blog', methods=['get'])
 def blog():
 
-    blog = get_blog()
+    blog = get_blog('all')
 
     return render_template('blog.html', blog=blog)
 
 @app.route('/blog/<category>', methods=['get'])
 def blog_category(category):
 
-    blog = get_blog()
+    blog = get_blog('all')
 
     return render_template('blog.html', blog=blog, category=category)
 
 @app.route('/blog/<id>', methods=['get'])
 def blog_id(id):
 
-    blog = get_blog()
+    blog = get_blog(id)
 
     return render_template('blog.html', blog=blog, id=id)
 
@@ -116,7 +110,7 @@ def personal():
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    personal = get_personal()
+    personal = get_personal('all')
 
     return render_template('personal.html', personal=personal)
 
@@ -126,7 +120,7 @@ def personal_category(category):
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    personal = get_personal()
+    personal = get_personal('all')
 
     return render_template('personal.html', personal=personal, category=category)
 
@@ -137,7 +131,7 @@ def personal_id(id):
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    personal = get_personal()
+    personal = get_personal(id)
 
     return render_template('personal.html', personal=personal, id=id)
 
@@ -147,7 +141,7 @@ def random():
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    random = get_random()
+    random = get_random('all')
 
     return render_template('random.html', random=random)
 
@@ -157,7 +151,7 @@ def random_category(category):
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    random = get_random()
+    random = get_random('all')
 
     return render_template('random.html', random=random, category=category)
 
@@ -167,7 +161,7 @@ def random_id(id):
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    random = get_random()
+    random = get_random(id)
 
     return render_template('random.html', random=random, id=id)
 
@@ -177,7 +171,7 @@ def reminders():
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    reminders = get_reminders()
+    reminders = get_reminders('all')
 
     return render_template('reminders.html', reminders=reminders)
 
