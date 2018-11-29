@@ -90,14 +90,14 @@ def blog():
 
     return render_template('blog.html', blog=blog)
 
-@app.route('/blog/<category>', methods=['get'])
+@app.route('/blog/category/<category>', methods=['get'])
 def blog_category(category):
 
     blog = get_blog('all')
 
     return render_template('blog.html', blog=blog, category=category)
 
-@app.route('/blog/<str:id>', methods=['get'])
+@app.route('/blog/<id>', methods=['get'])
 def blog_id(id):
 
     blog = get_blog(id)
@@ -114,7 +114,7 @@ def personal():
 
     return render_template('personal.html', personal=personal)
 
-@app.route('/personal/<category>', methods=['get'])
+@app.route('/personal/category/<category>', methods=['get'])
 def personal_category(category):
 
     if 'owner' not in session:
@@ -145,7 +145,7 @@ def random():
 
     return render_template('random.html', random=random)
 
-@app.route('/random/<category>', methods=['get'])
+@app.route('/random/category/<category>', methods=['get'])
 def random_category(category):
 
     if 'owner' not in session:
