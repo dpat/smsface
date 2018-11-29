@@ -171,7 +171,7 @@ def reminders():
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    reminders = get_reminders('all')
+    reminders = get_reminders()
 
     return render_template('reminders.html', reminders=reminders)
 
