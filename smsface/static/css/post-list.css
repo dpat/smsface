@@ -15,3 +15,9 @@
 .post-date {
     float: right;
 }
+
+@media screen and (max-width: 767px){
+.post-date {
+    display: none;
+}
+}
