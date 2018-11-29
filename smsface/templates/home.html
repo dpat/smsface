@@ -15,7 +15,11 @@
            <div class="row">
                <li class="post-row">
                    <span class="text-left">
-                       <a href="/blog/{{post.postid}}/">{{post.title}}</a>
+                      {% if post.title == '' %}
+                        <a href="/blog/{{post.postid}}"> Post {{post.postid}}</a>
+                      {% else %}
+                        <a href="/blog/{{post.postid}}">{{post.title}}</a>
+                      {% endif %}
                    </span>
                    &nbsp; &nbsp;
                    <span class="post-date text-right">
