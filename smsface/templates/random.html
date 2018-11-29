@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+{% include 'base.html' %}
 
 <head>
   <link rel='stylesheet' type='text/css' href='{{ url_for('static',filename='styles/style.css') }}' />
@@ -17,6 +18,9 @@
     {{ post.category }}
     <p>
       {{ post.post }}
+    </p>
+    <p>
+      ----------------
     </p>
   </div>
   {% endfor %}
