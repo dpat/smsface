@@ -80,8 +80,9 @@ def home():
 
     blog = get_blog('all')
 
+    date = blog['date'].strftime('%d-%b-%y')
     return render_template('home.html', admin=admin, blog=blog, random=random,
-                           personal=personal, reminders=reminders)
+                           personal=personal, reminders=reminders, date=date)
 
 @app.route('/blog', methods=['get'])
 def blog():
