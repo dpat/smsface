@@ -100,7 +100,7 @@ def blog_category(category):
 @app.route('/blog/<id>', methods=['get'])
 def blog_id(id):
 
-    blog = get_blog(id)
+    blog = [get_blog(id)]
 
     return render_template('blog.html', blog=blog, id=id)
 
@@ -131,7 +131,7 @@ def personal_id(id):
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    personal = get_personal(id)
+    personal = [get_personal(id)]
 
     return render_template('personal.html', personal=personal, id=id)
 
@@ -161,7 +161,7 @@ def random_id(id):
     if 'owner' not in session:
         return redirect(url_for('login'))
 
-    random = get_random(id)
+    random = [get_random(id)]
 
     return render_template('random.html', random=random, id=id)
 
