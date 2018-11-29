@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+{% include 'base.html' %}
 <head>
   <link rel='stylesheet' type='text/css' href='{{ url_for('static',filename='styles/style.css') }}' />
 </head>
@@ -8,7 +8,7 @@
 <body>
 
 
-  <h1> Welcome to the first ever SMS blog </h1>
+  <h1> Welcome to the first ever SMS generated website </h1>
 
 
   {% for post in blog %}
