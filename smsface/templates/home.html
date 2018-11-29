@@ -25,7 +25,7 @@
                    </span>
                    &nbsp; &nbsp;
                    <span class="post-date text-right">
-                       {{ strptime(post.date, '%d-%b-%y') }}
+                       {{ datetime.strptime(post.date, '%d-%b-%y') }}
                    </span>
                </li>
            </div>
