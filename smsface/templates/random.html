@@ -14,17 +14,20 @@
 
   {% for post in random[::-1] %}
   <div>
+    <p>
+      ----------------
+    </p>
     {{ post.postid }}
     {{ post.category }}
     <p>
       {{ post.post }}
     </p>
-    <p>
-      ----------------
-    </p>
+
   </div>
   {% endfor %}
-
+  <p>
+    ----------------
+  </p>
 </body>
 
 </html>
