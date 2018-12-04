@@ -90,7 +90,7 @@ def blog():
 
     blog = get_blog('all')
     for item in blog:
-        item['date'] = parse(item['date']).strftime('%d %b %Y')
+        item['date'] = parse(item['date']).strftime('%B %d, %Y')
     return render_template('blog.html', blog=blog)
 
 @app.route('/blog/category/<category>', methods=['get'])
@@ -98,7 +98,7 @@ def blog_category(category):
 
     blog = get_blog('all')
     for item in blog:
-        item['date'] = parse(item['date']).strftime('%d %b %Y')
+        item['date'] = parse(item['date']).strftime('%B %d, %Y')
     return render_template('blog.html', blog=blog, category=category)
 
 @app.route('/blog/<id>', methods=['get'])
@@ -106,7 +106,7 @@ def blog_id(id):
 
     blog = [get_blog(id)]
     for item in blog:
-        item['date'] = parse(item['date']).strftime('%d %b %Y')
+        item['date'] = parse(item['date']).strftime('%B %d, %Y')
     return render_template('blog.html', blog=blog, id=id)
 
 @app.route('/personal', methods=['get'])
