@@ -73,17 +73,15 @@ def logout():
 @app.route('/', methods=['get'])
 def home():
 
-    admin = False
-
-    personal = "not_admin"
-    reminders = "not_admin"
-    random = "not_admin"
+    if 'owner' in session:
+        logged_in = True
 
     blog = get_blog('all')
     for item in blog:
         item['date'] = parse(item['date']).strftime('%d %b %Y')
-    return render_template('home.html', admin=admin, blog=blog, random=random,
-                           personal=personal, reminders=reminders)
+    return render_template('home.html', blog=blog, random=random,
+                           personal=personal, reminders=reminders,
+                           logged_in=logged_in)
 
 @app.route('/blog', methods=['get'])
 def blog():
@@ -180,9 +178,25 @@ def reminders():
 
     return render_template('reminders.html', reminders=reminders)
 
+@app.route('/about', methods=['get'])
+def about():
+
+    return render_template('about.html')
+
+@app.route('/contact', methods=['get'])
+def contact():
+
+    return render_template('contact.html', phone=app.config.get('num'),
+                           linkedin=app.config.get('linkedin'),
+                           git=app.config.get('git'),
+                           email=app.config.get('email'))
 
 if __name__=='__main__':
     app.config['baseurl'] = '?'
     app.config['token'] = '?'
     app.config['password'] = '?'
+    app.config['linkedin'] = '?'
+    app.config['git'] = '?'
+    app.config['email'] = '?'
+    app.config['phone'] = '?'
     app.run()
