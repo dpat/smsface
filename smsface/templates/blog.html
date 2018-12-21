@@ -22,7 +22,9 @@
     <h5> {{ post.date }} | {{post.postid}} </h5>
     <p> </p>
     <p>
+      {% autoescape false %}
       {{ post.post }}
+      {% endautoescape %}
     </p>
 
   </div>
