@@ -73,6 +73,7 @@ def logout():
 @app.route('/', methods=['get'])
 def home():
 
+    logged_in = False
     if 'owner' in session:
         logged_in = True
 
